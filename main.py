@@ -4,7 +4,8 @@ try:
     win = Tk()
     win.title("Calci-Created BY ANAN")
     win.configure(background="cyan")
-    win.geometry(("300x240"))
+    win.geometry(("325x245"))
+    win.resizable(0,0)
     exp = ""
     update = StringVar()
     def press(n):
@@ -39,9 +40,9 @@ try:
             exp = ""
         except Exception:
             update.set("ERROR ")
-    entry = Entry(win,textvariable=update,width=45)
-    entry.grid(row=0,column=0,columnspan=5,ipadx=5,ipady=15)
-    button7 = Button(win,text="7",height=1,width=7,command=lambda :press(7),)
+    entry = Label(win,textvariable=update,width=30,anchor=W)
+    entry.grid(row=0,column=0,columnspan=5,ipadx=5,ipady=15,sticky=N+S+E+W)
+    button7 = Button(win,text="7",height=1,width=7,command=lambda :press(7))
     button7.grid(row=2,column=0,ipadx=5,pady=5)
     button8 = Button(win,text="8",height=1,width=7,command=lambda :press(8))
     button8.grid(row=2,column=1,ipadx=5)
@@ -56,9 +57,9 @@ try:
     button1 = Button(win,text="1",height=1,width=7,command=lambda :press(1))
     button1.grid(row=4,column=0,ipadx=5,pady=5)
     button2 = Button(win,text="2",height=1,width=7,command=lambda :press(2))
-    button2.grid(row=4,column=1,ipadx=5)
+    button2.grid(row=4,column=1,ipadx=5,padx=5)
     button3 = Button(win,text="3",height=1,width=7,command=lambda :press(3))
-    button3.grid(row=4,column=2,ipadx=5)
+    button3.grid(row=4,column=2,ipadx=5,padx=5)
     button0 = Button(win,text="0",height=1,width=7,command=lambda :press(0))
     button0.grid(row=5,column=0,ipadx=5)
     buttonc=Button(win,text="C",height=1,width=7,command=clear)
@@ -72,7 +73,7 @@ try:
     buttond=Button(win,text=".",height=1,width=7,command=lambda:press("."))
     buttond.grid(row=5,column=1,ipadx=5)
     buttonequal=Button(win,text="=",height=1,width=7,command=equal)
-    buttonequal.grid(row=5,column=2,ipadx=40,columnspan=2)
+    buttonequal.grid(row=5,column=2,ipadx=50,columnspan=2,padx=5)
     buttondiv=Button(win,text="/",height=1,width=7,command=lambda:press("/"))
     buttondiv.grid(row=1,column=3,ipadx=5)
     buttonf=Button(win,text="!",height=1,width=7,command=lambda:percent())
