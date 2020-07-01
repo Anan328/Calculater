@@ -34,7 +34,7 @@ try:
     def root():
         try:
             global exp
-            y=sqrt(int(exp))
+            y=sqrt(float(exp))
             update.set(y)
             exp = ""
         except Exception:
