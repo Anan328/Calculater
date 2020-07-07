@@ -1,5 +1,5 @@
 from tkinter import *
-from math import *
+import math
 try:
     win = Tk()
     win.title("Calci-Created BY ANAN")
@@ -19,28 +19,35 @@ try:
     def equal():
         try:
             global exp
-            r=str(eval(exp))
+            r = eval(str(entry.get()))
             update.set(r)
             exp = ""
         except Exception:
             update.set("ERROR ")
-    def percent():
+    def equalkey(event):
         try:
             global exp
-            y=factorial(int(exp))
-            update.set(y)
+            r = eval(str(entry.get()))
+            update.set(r)
             exp = ""
         except Exception:
             update.set("ERROR ")
+    def factorial():
+
+        global exp
+        r = math.factorial(int(entry.get()))
+        update.set(r)
+        exp = ""
+
     def root():
         try:
             global exp
-            y=sqrt(float(exp))
+            y=math.sqrt(float(entry.get()))
             update.set(y)
             exp = ""
         except Exception:
             update.set("ERROR ")
-    entry = Label(win,textvariable=update,width=30,anchor=W)
+    entry = Entry(win,textvariable=update,width=30)
     entry.grid(row=0,column=0,columnspan=5,ipadx=5,ipady=15,sticky=N+S+E+W)
     button7 = Button(win,text="7",height=1,relief="flat",bg="#f0ede5",width=7,command=lambda :press(7))
     button7.grid(row=2,column=0,ipadx=5,pady=5)
@@ -76,10 +83,11 @@ try:
     buttonequal.grid(row=5,column=2,ipadx=50,columnspan=2,padx=5)
     buttondiv=Button(win,text="/",height=1,width=7,relief="flat",bg="#fb5507",command=lambda:press("/"))
     buttondiv.grid(row=1,column=3,ipadx=5)
-    buttonf=Button(win,text="!",height=1,width=7,relief="flat",bg="#b76ba3",command=lambda:percent())
+    buttonf=Button(win,text="!",height=1,width=7,relief="flat",bg="#b76ba3",command=lambda:factorial())
     buttonf.grid(row=1, column=2, ipadx=5,pady=5)
     buttonr = Button(win, text="√", height=1, relief="flat",bg="#006e6d",width=7, command=lambda:root())
     buttonr.grid(row=1, column=1, ipadx=5)
+    win.bind("<Return>",equalkey)
     win.mainloop()
 except Exception:
     update.set("something went wrong")
